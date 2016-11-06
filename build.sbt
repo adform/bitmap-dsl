@@ -1,6 +1,8 @@
+import ReleaseTransformations._
+
 name := "bitmap-dsl"
 
-organization := "com.ppiotrow"
+organization := "com.github.ppiotrow"
 
 licenses += ("MIT", url("http://opensource.org/licenses/MIT"))
 
@@ -13,3 +15,19 @@ libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "2.2.6" % "test"
 )
 
+
+
+releaseProcess := Seq[ReleaseStep](
+  checkSnapshotDependencies,
+  inquireVersions,
+  runClean,
+  runTest,
+  setReleaseVersion,
+  commitReleaseVersion,
+  tagRelease,
+  ReleaseStep(action = Command.process("publishSigned", _)),
+  setNextVersion,
+  commitNextVersion,
+  ReleaseStep(action = Command.process("sonatypeReleaseAll", _)),
+  pushChanges
+)
