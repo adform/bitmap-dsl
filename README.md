@@ -10,7 +10,7 @@ It uses official Java [implementation](https://github.com/RoaringBitmap/RoaringB
 To get started with SBT, simply add the following to your `build.sbt` file:
 
 ```scala
-libraryDependencies += "com.github.ppiotrow" %% "bitmap-dsl" % "0.1"
+libraryDependencies += "com.github.ppiotrow" %% "bitmap-dsl" % "0.2"
 ```
 
 The storage is not part of the library, you can choose using heap or mmap file (or other) and provide with implementation of `BitmapDB` trait (see example).
