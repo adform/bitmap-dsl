@@ -46,8 +46,9 @@ object Or {
 
 object Not {
   def apply(not: BitmapOperation): BitmapOperation = not match {
-    case Empty => Empty
+    case Empty => Full
+    case Full => Empty
     case Negation(bitmap) => bitmap
-    case op => Negation(op)
+    case _ => Negation(not)
   }
 }
