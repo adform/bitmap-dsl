@@ -25,7 +25,6 @@ case object Full extends BitmapOperation
 object And {
   def apply(bitmaps: List[BitmapOperation]): BitmapOperation = bitmaps match {
     case Nil => Empty
-    case Negation(neg) :: Nil => Conjunction(bitmaps) //special case, unsafe to flatten this
     case h :: Nil => h
     case _ => Conjunction(bitmaps)
   }
