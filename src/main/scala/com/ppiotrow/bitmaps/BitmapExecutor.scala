@@ -3,7 +3,6 @@ package com.ppiotrow.bitmaps
 import scala.annotation.tailrec
 
 class BitmapExecutor[T](val db: BitmapDB[T])(implicit bi: BitmapsImpl[T]) {
-  import BitmapExecutor._
   def execute(expression: BitmapOperation): T = (expression: @unchecked) match {
     case or: Alternative => accumulateOR(or.bitmaps, Nil)
     case and: Conjunction => accumulateAND(and.bitmaps, Nil)
@@ -54,8 +53,4 @@ class BitmapExecutor[T](val db: BitmapDB[T])(implicit bi: BitmapsImpl[T]) {
     case _ => bi.andNot(base, execute(operation))
   }
 
-}
-
-object BitmapExecutor {
-  case class BitmapExecutionException(msg: String) extends RuntimeException(msg)
 }
