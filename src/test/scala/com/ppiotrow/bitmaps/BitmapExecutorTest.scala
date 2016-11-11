@@ -10,18 +10,6 @@ class BitmapExecutorTest extends MustMatchers with WordSpecLike {
   import com.ppiotrow.bitmaps.Implicits.RoaringBitmapImpl
 
   "BitmapExecutor" must {
-    "calculate alternative (a OR b)" in {
-      val expression = Or(Get("a"), Get("b"))
-      val db: BitmapDB[RoaringBitmap] = TestDB(Map(
-        "a" -> RoaringBitmap.bitmapOf(1, 3, 5, 111),
-        "b" -> RoaringBitmap.bitmapOf(2, 4, 5)
-      ))
-
-      val result = new BitmapExecutor(db).execute(expression)
-
-      result mustBe RoaringBitmap.bitmapOf(1, 2, 3, 4, 5, 111)
-    }
-
     "calculate conjunction (a AND b)" in {
       val expression = And(Get("a"), Get("b"))
       val db: BitmapDB[RoaringBitmap] = TestDB(Map(
@@ -62,21 +50,6 @@ class BitmapExecutorTest extends MustMatchers with WordSpecLike {
       result mustBe RoaringBitmap.bitmapOf(5, 777)
     }
 
-    "calculate deep associative alternative ((((a OR b) OR c) OR d) OR e)" in {
-      val expression = Or(Or(Or(Or(Get("a"), Get("b")), Get("c")), Get("d")), Get("e"))
-      val db: BitmapDB[RoaringBitmap] = TestDB(Map(
-        "a" -> RoaringBitmap.bitmapOf(1, 3, 5, 7, 9, 123, 777),
-        "b" -> RoaringBitmap.bitmapOf(1, 2, 5, 444, 123, 777, 11111),
-        "c" -> RoaringBitmap.bitmapOf(1, 5, 123, 8, 777),
-        "d" -> RoaringBitmap.bitmapOf(2, 3, 4, 5, 123, 777),
-        "e" -> RoaringBitmap.bitmapOf(1, 2, 5, 6, 7, 8, 777, 11111)
-      ))
-
-      val result = new BitmapExecutor(db).execute(expression)
-
-      result mustBe RoaringBitmap.bitmapOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 123, 444, 777, 11111)
-    }
-
     "calculate conjunction of alternatives (a OR b) AND (c OR d)" in {
       val expression = And(Or(Get("a"), Get("b")), Or(Get("c"), Get("d")))
       val db: BitmapDB[RoaringBitmap] = TestDB(Map(
@@ -91,19 +64,6 @@ class BitmapExecutorTest extends MustMatchers with WordSpecLike {
       result mustBe RoaringBitmap.bitmapOf(1, 3, 5)
     }
 
-    "calculate alternatives of conjunctions (a AND b) OR (c AND d)" in {
-      val expression = Or(And(Get("a"), Get("b")), And(Get("c"), Get("d")))
-      val db: BitmapDB[RoaringBitmap] = TestDB(Map(
-        "a" -> RoaringBitmap.bitmapOf(1, 3, 5, 7),
-        "b" -> RoaringBitmap.bitmapOf(1, 2, 5, 17),
-        "c" -> RoaringBitmap.bitmapOf(3, 5, 8, 777),
-        "d" -> RoaringBitmap.bitmapOf(1, 5, 123, 777)
-      ))
-
-      val result = new BitmapExecutor(db).execute(expression)
-
-      result mustBe RoaringBitmap.bitmapOf(1, 5, 777)
-    }
 
     "calculate some example (a AND (b OR c OR d)) AND e" in {
       val expression = And(And(Get("a"), Or(Get("b"), Get("c"), Get("d"))), Get("e"))
@@ -213,27 +173,6 @@ class BitmapExecutorTest extends MustMatchers with WordSpecLike {
       result mustBe expected
     }
 
-    "return Full when Full in Alternative" in {
 
-      val expression = Or(Get("device|2"), Full)
-      val db: BitmapDB[RoaringBitmap] = TestDB(Map(
-        "device|2" -> RoaringBitmap.bitmapOf(1, 3, 7),
-        "FULL" -> RoaringBitmap.bitmapOf(1, 2, 3, 4, 5, 6, 7)))
-      val result = new BitmapExecutor(db).execute(expression)
-
-      result mustBe RoaringBitmap.bitmapOf(1, 2, 3, 4, 5, 6, 7)
-    }
-
-    "ignore Empty in Alternative" in {
-
-      val expression = Or(Empty, Get("device|2"))
-      val db: BitmapDB[RoaringBitmap] = TestDB(Map(
-        "device|2" -> RoaringBitmap.bitmapOf(1, 3, 7)))
-
-      val result = new BitmapExecutor(db).execute(expression)
-
-      val expected = RoaringBitmap.bitmapOf(1, 3, 7)
-      result mustBe expected
-    }
   }
 }
