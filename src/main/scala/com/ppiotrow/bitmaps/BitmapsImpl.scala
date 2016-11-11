@@ -1,6 +1,6 @@
 package com.ppiotrow.bitmaps
 
-import org.roaringbitmap.buffer.{BufferFastAggregation, MutableRoaringBitmap}
+import org.roaringbitmap.buffer.{BufferFastAggregation, ImmutableRoaringBitmap, MutableRoaringBitmap}
 import org.roaringbitmap.{FastAggregation, RoaringBitmap}
 
 import scala.annotation.tailrec
@@ -55,6 +55,18 @@ object Implicits {
     type RoaringBitmapF = Future[RoaringBitmap]
   }
 
+  implicit object ImmutableRoaringBitmapImpl extends BitmapsImpl[ImmutableRoaringBitmap] {
+    override def batchAnd(bitmaps: List[ImmutableRoaringBitmap]) =
+      BufferFastAggregation.and(bitmaps.iterator.asJava)
+    override def batchOr(bitmaps: List[ImmutableRoaringBitmap]) =
+      BufferFastAggregation.or(bitmaps.iterator.asJava)
+    override def empty = new MutableRoaringBitmap().toImmutableRoaringBitmap
+    override def andNot(left: ImmutableRoaringBitmap, right: ImmutableRoaringBitmap) = {
+      val copy = left.toMutableRoaringBitmap
+      copy.andNot(right)
+      copy
+    }
+  }
   implicit object MutableRoaringBitmapImpl extends BitmapsImpl[MutableRoaringBitmap] {
     override def batchAnd(bitmaps: List[MutableRoaringBitmap]) =
       BufferFastAggregation.and(bitmaps.iterator.asJava)

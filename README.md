@@ -13,10 +13,12 @@ To get started with SBT, simply add the following to your `build.sbt` file:
 libraryDependencies += "com.github.ppiotrow" %% "bitmap-dsl" % "0.2"
 ```
 
-The storage is not part of the library, you can choose using heap or mmap file (or other) and provide with implementation of `BitmapDB` trait (see example).
+The storage is not part of the library, you can choose using heap or mmap file (or other) and provide with implementation of `BitmapDB[T]` trait (see example).
 It is parametrized by `T` that must have implementation of `BitmapsImpl` trait. 
 Currently supported are:
 * `RoaringBitmap` by `Implicits.RoaringBitmapImpl`
+* `ImmutableRoaringBitmap` by `Implicits.ImmutableRoaringBitmapImpl`
+* `MutableRoaringBitmap` by `Implicits.MutableRoaringBitmapImpl`
 * `Future[RoaringBitmap]` by `Implicits.ConcurrentRoaringBitmapImpl`
 
 ### Example
