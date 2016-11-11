@@ -1,4 +1,4 @@
-package com.ppiotrow.bitmaps
+package com.ppiotrow.bitmaps.impl
 
 import com.ppiotrow.bitmaps.Implicits.{ConcurrentRoaringBitmapImpl, RoaringBitmapImpl}
 import org.roaringbitmap.RoaringBitmap.bitmapOf
@@ -7,7 +7,7 @@ import org.scalatest.{MustMatchers, WordSpecLike}
 
 import scala.concurrent.Future
 
-class BitmapsImplTest extends MustMatchers with WordSpecLike with ScalaFutures {
+class RoaringBitmapImplTest extends MustMatchers with WordSpecLike with ScalaFutures {
 
   "RoaringBitmapImpl" must {
     "calculate batchAND" in {
