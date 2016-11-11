@@ -82,6 +82,20 @@ class ConjunctionTest extends BitmapTest with WordSpecLike {
         db = Map(),
         expected = bitmapOf())
     }
-  }
 
+    "calculate conjunction with negation A and ¬B and C (FULL not needed)" in {
+      check(
+        expr =
+          And(
+            Get("A"),
+            Not(Get("B")),
+            Get("C")),
+        db = Map(
+          "A" -> bitmapOf(1, 3, 5),
+          "B" -> bitmapOf(2, 4, 5, 6, 7),
+          "C" -> bitmapOf(3, 8)),
+        expected = bitmapOf(3))
+    }
+
+  }
 }

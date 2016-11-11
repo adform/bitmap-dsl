@@ -73,5 +73,20 @@ class AlternativeTest extends BitmapTest with WordSpecLike {
           "A" -> bitmapOf(1, 3, 7)),
         expected = bitmapOf(1, 3, 7))
     }
+
+    "calculate alternative with negation A or ¬B or C" in {
+      check(
+        expr =
+          Or(
+            Get("A"),
+            Not(Get("B")),
+            Get("C")),
+        db = Map(
+          "A" -> bitmapOf(1, 3, 5),
+          "B" -> bitmapOf(2, 4, 5, 6, 7),
+          "C" -> bitmapOf(2, 5),
+          "FULL" -> bitmapOf(1, 2, 3, 4, 5, 6, 7, 8)),
+        expected = bitmapOf(1, 2, 3, 5, 8))
+    }
   }
 }
