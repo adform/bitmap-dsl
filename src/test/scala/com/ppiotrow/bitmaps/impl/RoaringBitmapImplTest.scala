@@ -55,25 +55,9 @@ class RoaringBitmapImplTest extends MustMatchers with WordSpecLike with ScalaFut
     }
   }
 
-  val and = List(
-    bitmapOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
-    bitmapOf(5, 6, 7, 8, 9, 10),
-    bitmapOf(1, 2, 3, 4, 7, 8, 9, 10),
-    bitmapOf(4, 5, 6, 8, 9, 10),
-    bitmapOf(1, 2, 4, 6, 8, 9, 10),
-    bitmapOf(1, 7, 8, 9, 10),
-    bitmapOf(1, 5, 6, 7, 8, 9)
-  )
+  val and = ImplTestData.and.map(bits => bitmapOf(bits: _*))
 
-  val or = List(
-    bitmapOf(1, 2, 8, 9, 10),
-    bitmapOf(1, 3, 5, 9, 10),
-    bitmapOf(1, 2, 8, 9, 10),
-    bitmapOf(1, 5, 10),
-    bitmapOf(1, 2, 8, 9, 10),
-    bitmapOf(1, 2, 8, 9, 10),
-    bitmapOf(1, 4, 7)
-  )
+  val or = ImplTestData.or.map(bits => bitmapOf(bits: _*))
   val longerAnd = and ::: List(
     bitmapOf(3, 4, 7, 8, 9),
     bitmapOf(8, 9, 10),
