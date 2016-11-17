@@ -54,4 +54,4 @@ object Example extends App {
 
 ### Copyright and License
 
-All code is available to you under the MIT license.
+All code is available to you under the Apache 2.0 license.
