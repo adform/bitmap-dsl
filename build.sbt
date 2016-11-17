@@ -16,7 +16,7 @@ libraryDependencies ++= Seq(
   "org.roaringbitmap" % "RoaringBitmap" % "0.6.27",
   "org.scalatest" %% "scalatest" % "3.0.1" % "test"
 )
-
+releaseCrossBuild := true
 releaseProcess := Seq[ReleaseStep](
   checkSnapshotDependencies,
   inquireVersions,
