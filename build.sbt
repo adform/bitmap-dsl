@@ -2,9 +2,9 @@ import ReleaseTransformations._
 
 name := "bitmap-dsl"
 
-organization := "com.github.ppiotrow"
+organization := "com.adform"
 
-licenses += ("MIT", url("http://opensource.org/licenses/MIT"))
+licenses += ("Apache-2.0", url("https://opensource.org/licenses/Apache-2.0"))
 
 javacOptions ++= Seq("-source", "1.8", "-target", "1.8")
 

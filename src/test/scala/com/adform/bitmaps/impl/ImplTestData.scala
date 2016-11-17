@@ -1,4 +1,4 @@
-package com.ppiotrow.bitmaps.impl
+package com.adform.bitmaps.impl
 
 object ImplTestData {
   val and = List(

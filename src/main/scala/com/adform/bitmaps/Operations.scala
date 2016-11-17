@@ -1,4 +1,4 @@
-package com.ppiotrow.bitmaps
+package com.adform.bitmaps
 
 sealed trait BitmapOperation
 trait BitmapDB[T] {

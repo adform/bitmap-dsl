@@ -1,4 +1,4 @@
-package com.ppiotrow.bitmaps
+package com.adform.bitmaps
 
 import org.roaringbitmap.buffer.{BufferFastAggregation, ImmutableRoaringBitmap, MutableRoaringBitmap}
 import org.roaringbitmap.{FastAggregation, RoaringBitmap}

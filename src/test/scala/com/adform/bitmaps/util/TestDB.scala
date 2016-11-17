@@ -1,6 +1,6 @@
-package com.ppiotrow.bitmaps.util
+package com.adform.bitmaps.util
 
-import com.ppiotrow.bitmaps.BitmapDB
+import com.adform.bitmaps.BitmapDB
 
 case class TestDB[T](map: Map[String, T]) extends BitmapDB[T] {
   val FULL = "FULL"

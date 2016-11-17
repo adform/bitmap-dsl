@@ -1,6 +1,6 @@
-package com.ppiotrow.bitmaps.impl
+package com.adform.bitmaps.impl
 
-import com.ppiotrow.bitmaps.Implicits.{ConcurrentRoaringBitmapImpl, RoaringBitmapImpl}
+import com.adform.bitmaps.Implicits.{ConcurrentRoaringBitmapImpl, RoaringBitmapImpl}
 import org.roaringbitmap.RoaringBitmap.bitmapOf
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.{MustMatchers, WordSpecLike}

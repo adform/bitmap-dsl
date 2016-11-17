@@ -1,4 +1,4 @@
-import com.ppiotrow.bitmaps._
+import com.adform.bitmaps._
 import org.roaringbitmap.RoaringBitmap
 
 //example storage implementation
@@ -20,7 +20,7 @@ object Example extends App {
         Get("born|PL")
       ))
 
-  import com.ppiotrow.bitmaps.Implicits.RoaringBitmapImpl
+  import com.adform.bitmaps.Implicits.RoaringBitmapImpl
   val result = new BitmapExecutor(students).execute(expr)
   print(s"MIT Students born in USA or PL: $result") // {1,2,9}
 }

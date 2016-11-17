@@ -1,6 +1,6 @@
-package com.ppiotrow.bitmaps.util
+package com.adform.bitmaps.util
 
-import com.ppiotrow.bitmaps.{BitmapExecutor, BitmapOperation, BitmapsImpl}
+import com.adform.bitmaps.{BitmapExecutor, BitmapOperation, BitmapsImpl}
 import org.scalatest.MustMatchers
 
 

@@ -1,7 +1,7 @@
-package com.ppiotrow.bitmaps
+package com.adform.bitmaps
 
-import com.ppiotrow.bitmaps.Implicits.RoaringBitmapImpl
-import com.ppiotrow.bitmaps.util.BitmapTest
+import com.adform.bitmaps.Implicits.RoaringBitmapImpl
+import com.adform.bitmaps.util.BitmapTest
 import org.roaringbitmap.RoaringBitmap.bitmapOf
 import org.scalatest.WordSpecLike
 

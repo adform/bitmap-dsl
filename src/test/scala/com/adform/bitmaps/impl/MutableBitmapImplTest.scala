@@ -1,8 +1,8 @@
-package com.ppiotrow.bitmaps.impl
+package com.adform.bitmaps.impl
 
-import com.ppiotrow.bitmaps.Implicits.MutableRoaringBitmapImpl
-import com.ppiotrow.bitmaps.util.TestDB
-import com.ppiotrow.bitmaps.{BitmapDB, BitmapExecutor, Get}
+import com.adform.bitmaps.Implicits.MutableRoaringBitmapImpl
+import com.adform.bitmaps.util.TestDB
+import com.adform.bitmaps.{BitmapDB, BitmapExecutor, Get}
 import org.roaringbitmap.buffer.MutableRoaringBitmap
 import org.roaringbitmap.buffer.MutableRoaringBitmap.bitmapOf
 import org.scalatest.{MustMatchers, WordSpecLike}

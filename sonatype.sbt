@@ -1,13 +1,13 @@
 
 
-organization := "com.github.ppiotrow"
+organization := "com.adform"
 
 pomExtra in Global := {
-  <url>https://github.com/ppiotrow/bitmap-dsl</url>
+  <url>https://github.com/adform/bitmap-dsl</url>
     <scm>
-      <connection>scm:git:github.com/ppiotrow/bitmap-dsl</connection>
-      <developerConnection>scm:git:git@github.com:ppiotrow/bitmap-dsl</developerConnection>
-      <url>github.com/ppiotrow/bitmap-dsl</url>
+      <connection>scm:git:github.com/adform/bitmap-dsl</connection>
+      <developerConnection>scm:git:git@github.com:adform/bitmap-dsl</developerConnection>
+      <url>github.com/adform/bitmap-dsl</url>
     </scm>
     <developers>
       <developer>

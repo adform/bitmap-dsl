@@ -1,4 +1,4 @@
-package com.ppiotrow.bitmaps
+package com.adform.bitmaps
 
 import scala.annotation.tailrec
 

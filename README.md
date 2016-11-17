@@ -10,7 +10,7 @@ It uses official Java [implementation](https://github.com/RoaringBitmap/RoaringB
 To get started with SBT, simply add the following to your `build.sbt` file:
 
 ```scala
-libraryDependencies += "com.github.ppiotrow" %% "bitmap-dsl" % "0.3"
+libraryDependencies += "com.adform" %% "bitmap-dsl" % "0.4"
 ```
 
 The storage is not part of the library, you can choose using heap or mmap file (or other) and provide with implementation of `BitmapDB[T]` trait (see example).
@@ -24,7 +24,7 @@ Currently supported are:
 ### Example
 
 ```scala
-import com.ppiotrow.bitmaps._
+import com.adform.bitmaps._
 import org.roaringbitmap.RoaringBitmap
 
 //example storage implementation
@@ -46,7 +46,7 @@ object Example extends App {
         Get("born|PL")
       ))
 
-  import com.ppiotrow.bitmaps.Implicits.RoaringBitmapImpl
+  import com.adform.bitmaps.Implicits.RoaringBitmapImpl
   val result = new BitmapExecutor(students).execute(expr)
   print(s"MIT Students born in USA or PL: $result") // {1,2,9}
 }

@@ -1,6 +1,6 @@
-package com.ppiotrow.bitmaps
+package com.adform.bitmaps
 
-import com.ppiotrow.bitmaps.util.TestDB
+import com.adform.bitmaps.util.TestDB
 import org.roaringbitmap.RoaringBitmap
 import org.roaringbitmap.RoaringBitmap.bitmapOf
 import org.scalatest.{MustMatchers, WordSpecLike}
@@ -8,7 +8,7 @@ import org.scalatest.{MustMatchers, WordSpecLike}
 
 class BitmapExecutorTest extends MustMatchers with WordSpecLike {
 
-  import com.ppiotrow.bitmaps.Implicits.RoaringBitmapImpl
+  import com.adform.bitmaps.Implicits.RoaringBitmapImpl
 
   "BitmapExecutor" must {
 
