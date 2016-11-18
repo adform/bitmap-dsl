@@ -1,6 +1,6 @@
 # Bitmap DSL
 
-### Overview
+[![Build Status](https://travis-ci.org/adform/bitmap-dsl.svg?branch=master)](https://travis-ci.org/adform/bitmap-dsl)
 
 The aim of the project is to define operations on [Roaring Bitmaps](http://roaringbitmap.org) in human friendly way.
 It uses official Java [implementation](https://github.com/RoaringBitmap/RoaringBitmap) underneath.
