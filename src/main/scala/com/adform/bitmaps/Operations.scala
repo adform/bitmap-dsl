@@ -6,16 +6,16 @@ trait BitmapDB[T] {
   def full: T
   case class BitmapReference(bitmap: T) extends BitmapOperation
 }
-private[bitmaps] case class Alternative(bitmaps: List[BitmapOperation]) extends BitmapOperation {
+case class Alternative(bitmaps: List[BitmapOperation]) extends BitmapOperation {
   override def toString = bitmaps.mkString("Or(", ",", ")")
 }
-private[bitmaps] case class Conjunction(bitmaps: List[BitmapOperation]) extends BitmapOperation {
+case class Conjunction(bitmaps: List[BitmapOperation]) extends BitmapOperation {
   override def toString = bitmaps.mkString("And(", ",", ")")
 }
 case class Get(id: String) extends BitmapOperation {
   override def toString = s"""Get("$id")"""
 }
-private[bitmaps] case class Negation(not: BitmapOperation) extends BitmapOperation {
+case class Negation(not: BitmapOperation) extends BitmapOperation {
   override def toString = s"""Not(${not.toString})"""
 }
 
