@@ -34,8 +34,7 @@ object Implicits {
     val GROUP_SIZE = 10
     override def batchAnd(bitmaps: List[RoaringBitmapF]) =
       groupedReduce(bitmaps, RoaringBitmapImpl.batchAnd)
-    override def batchOr(bitmaps: List[RoaringBitmapF]) =
-      groupedReduce(bitmaps, RoaringBitmapImpl.batchOr)
+    override def batchOr(bitmaps: List[RoaringBitmapF]) = Future.sequence(bitmaps).map(RoaringBitmapImpl.batchOr)
     override def andNot(left: RoaringBitmapF, right: RoaringBitmapF) = for {
       l <- left
       r <- right
@@ -46,7 +45,8 @@ object Implicits {
     private def groupedReduce(l: List[RoaringBitmapF], reducer: Reducer): RoaringBitmapF = l match {
       case Nil => empty
       case h :: Nil => h
-      case _ => groupedReduce(l.grouped(GROUP_SIZE)
+      case _ =>
+        groupedReduce(l.grouped(GROUP_SIZE)
         .map(group => Future.sequence(group).map(reducer))
         .toList, reducer)
     }
