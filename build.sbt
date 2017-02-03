@@ -13,7 +13,7 @@ scalaVersion := "2.12.0"
 crossScalaVersions := Seq("2.10.6", "2.11.8", "2.12.1")
 
 libraryDependencies ++= Seq(
-  "org.roaringbitmap" % "RoaringBitmap" % "0.6.32",
+  "org.roaringbitmap" % "RoaringBitmap" % "0.6.35",
   "org.scalatest" %% "scalatest" % "3.0.1" % "test"
 )
 releaseCrossBuild := true
